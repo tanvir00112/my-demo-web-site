@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tanvir Mobile Shop | Latest Smartphones</title>
+    
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* CSS Variables for Easy Customization */
+        :root {
+            --primary-color: #0c4a6e; /* Deep Blue */
+            --secondary-color: #0ea5e9; /* Sky Blue */
+            --accent-color: #f59e0b; /* Amber */
+            --background-color: #f8fafc; /* Light Gray */
+            --text-color: #334155; /* Slate Gray */
+            --light-text-color: #f1f5f9;
+            --card-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            --card-border-radius: 12px;
+        }
+
+        /* General Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        nav a {
+            color: var(--text-color);
+            margin: 0 1rem;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--secondary-color);
+        }
+
+        .cart-icon {
+            font-size: 1.2rem;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1587424369499-a5203346c437?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80') center/cover no-repeat;
+            color: var(--light-text-color);
+            text-align: center;
+            padding: 6rem 2rem;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            font-weight: 300;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 3rem;
+            color: var(--primary-color);
+        }
+
+        /* Products Section */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: var(--card-border-radius);
+            box-shadow: var(--card-shadow);
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            background-color: #eee; /* Fallback color */
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-price {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Button Styling */
+        .btn {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn:hover {
+            background: var(--secondary-color);
+            transform: scale(1.05);
+        }
+
+        .btn-accent {
+            background-color: var(--accent-color);
+        }
+        .btn-accent:hover {
+            background-color: #d97706; /* Darker Amber */
+        }
+        
+        /* Contact Section */
+        #contact {
+            background-color: #e0f2fe; /* Light Blue background */
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: var(--card-border-radius);
+            box-shadow: var(--card-shadow);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo">Tanvir Mobile Shop</a>
+            <nav>
+                <a href="#" class="active">Home</a>
+                <a href="#products">Phones</a>
+                <a href="#contact">Contact</a>
+                <a href="#cart" class="cart-icon"><i class="fas fa-shopping-cart"></i> Cart</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h2>Find Your Next Phone</h2>
+            <p>The Best Deals on the Latest Smartphones</p>
+        </section>
+
+        <section id="products" class="container">
+            <h2 class="section-title">Latest Phones</h2>
+            <div class="products-grid">
+                <!-- Product Card 1: Samsung Galaxy S23 Ultra -->
+                <div class="product-card">
+                    <img src="https://images.unsplash.com/photo-1678122493928-a2d4314384e4?q=80&w=800&auto=format&fit=crop" 
+                         onerror="this.onerror=null;this.src='https://placehold.co/400x400/eee/334155?text=S23+Ultra';"
+                         alt="Samsung Galaxy S23 Ultra in Cream color">
+                    <div class="product-info">
+                        <h3>Samsung Galaxy S23 Ultra</h3>
+                        <p class="product-price">৳145,000</p>
+                        <button class="btn"><i class="fas fa-cart-plus"></i> Ekhoni Kinun</button>
+                    </div>
+                </div>
+                <!-- Product Card 2: Honor Magic5 Ultimate -->
+                <div class="product-card">
+                    <img src="https://fdn.gsmarena.com/vv/pics/honor/honor-magic5-ultimate-1.jpg" 
+                         onerror="this.onerror=null;this.src='https://placehold.co/400x400/eee/334155?text=Honor+Magic5';"
+                         alt="Honor Magic5 Ultimate Edition in Black">
+                    <div class="product-info">
+                        <h3>Honor Magic5 Ultimate</h3>
+                        <p class="product-price">৳120,000</p>
+                        <button class="btn"><i class="fas fa-cart-plus"></i> Ekhoni Kinun</button>
+                    </div>
+                </div>
+                <!-- Product Card 3: Samsung Galaxy S24 Ultra -->
+                <div class="product-card">
+                    <img src="https://img.global.news.samsung.com/global/wp-content/uploads/2024/01/Galaxy-S24-Ultra_Group-shot_Titanium-Violet-scaled.jpg" 
+                         onerror="this.onerror=null;this.src='https://placehold.co/400x400/eee/334155?text=S24+Ultra';"
+                         alt="Samsung Galaxy S24 Ultra in Titanium Violet">
+                    <div class="product-info">
+                        <h3>Samsung Galaxy S24 Ultra</h3>
+                        <p class="product-price">৳180,000</p>
+                        <button class="btn"><i class="fas fa-cart-plus"></i> Ekhoni Kinun</button>
+                    </div>
+                </div>
+                 <!-- Product Card 4: Honor Magic5 Pro (Lilac) -->
+                <div class="product-card">
+                    <img src="https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc3/Honor_Magic5_Pro_Purple_1.jpg" 
+                         onerror="this.onerror=null;this.src='https://placehold.co/400x400/eee/334155?text=Honor+Magic5+Pro';"
+                         alt="Honor Magic5 Pro in Lilac Purple">
+                    <div class="product-info">
+                        <h3>Honor Magic5 Pro (Purple)</h3>
+                        <p class="product-price">৳122,500</p>
+                        <button class="btn"><i class="fas fa-cart-plus"></i> Ekhoni Kinun</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="contact">
+            <div class="container">
+                <h2 class="section-title">Contact Us</h2>
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-accent">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Tanvir Mobile Shop. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
